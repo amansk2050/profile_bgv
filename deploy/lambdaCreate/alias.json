@@ -1,0 +1,92 @@
+[
+  {
+    "FunctionName": "Badge",
+    "Runtime": "nodejs12.x",
+    "Description": "badge lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "cognitoauth",
+    "Runtime": "nodejs12.x",
+    "Description": "cognitoauth lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "Comment",
+    "Runtime": "nodejs12.x",
+    "Description": "Comment lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingCategory",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingCategory lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingSubCategory",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingSubCategory lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingCourse",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingCourse lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingLecture",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingLecture lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingQuestion",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingQuestion lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingAnswer",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingAnswer lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  },
+  {
+    "FunctionName": "trainingTrack",
+    "Runtime": "nodejs12.x",
+    "Description": "trainingTrack lambda function",
+    "Timeout": 52,
+    "MemorySize": 256,
+    "environment": "Variables={}",
+    "tags": "Stage=development"
+  }
+]

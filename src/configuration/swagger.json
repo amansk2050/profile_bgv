@@ -1,0 +1,1456 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "${Name}_API",
+      "contact": {
+          "email": "louis.litt@jf-projects.com"
+      },
+      "license": {
+          "name": "Apache 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+  },
+  "tags": [
+      {
+          "name": "admins",
+          "description": "Secured Admin-only calls"
+      },
+      {
+          "name": "developers",
+          "description": "Operations available to regular developers"
+      }
+  ],
+  "paths": {
+      "/hcmTrainingCategory": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingCategory",
+              "operationId": "hcmTrainingCategory",
+              "description": "hcmTrainingCategory\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingCategory:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          }
+      },
+      "/hcmTrainingSubCategory": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingSubCategory",
+              "operationId": "hcmTrainingSubCategory",
+              "description": "hcmTrainingSubCategory\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingSubCategory:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          }
+      },
+      "/hcmTrainingCourse": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingCourse",
+              "operationId": "hcmTrainingCourse",
+              "description": "hcmTrainingCourse\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingCourse:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          }
+      },
+      "/hcmTrainingLecture": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingLecture",
+              "operationId": "hcmTrainingLecture",
+              "description": "hcmTrainingLecture\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingLecture:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          }
+      },
+      "/hcmTrainingQuestion": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingQuestion",
+              "operationId": "hcmTrainingQuestion",
+              "description": "hcmTrainingQuestion\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingQuestion:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          },
+          "patch": {
+              "tags": [
+                  "hcmTrainingQuestion"
+              ],
+              "summary": "hcmTrainingQuestion",
+              "operationId": "hcmTrainingQuestion",
+              "description": "hcmTrainingQuestion\n",
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams =  $input.params().querystring)\n{\n\t\"path\" : \"$context.path\",\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n\t\"pathParameters\":{\n\t    #foreach($param1 in $input.params().path.keySet())\n\t    \"$param1\": \"$util.escapeJavaScript($input.params().path.get($param1))\"\n\t    #if($foreach.hasNext),#end\n        #end\n\t},\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingQuestion:${branchName}/invocations",
+                  "passthroughBehavior": "when_no_match",
+                  "httpMethod": "POST",
+                  "type": "aws"
+              }
+          }
+      },
+      "/hcmTrainingAnswer": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingAnswer",
+              "operationId": "hcmTrainingAnswer",
+              "description": "hcmTrainingAnswer\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingAnswer:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          },
+          "post": {
+              "tags": [
+                  "hcmTrainingAnswer"
+              ],
+              "summary": "hcmTrainingAnswer",
+              "operationId": "hcmTrainingAnswer",
+              "description": "hcmTrainingAnswer\n",
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams =  $input.params().querystring)\n{\n\t\"path\" : \"$context.path\",\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n\t\"pathParameters\":{\n\t    #foreach($param1 in $input.params().path.keySet())\n\t    \"$param1\": \"$util.escapeJavaScript($input.params().path.get($param1))\"\n\t    #if($foreach.hasNext),#end\n        #end\n\t},\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingAnswer:${branchName}/invocations",
+                  "passthroughBehavior": "when_no_match",
+                  "httpMethod": "POST",
+                  "type": "aws"
+              }
+          },
+          "put": {
+              "tags": [
+                  "hcmTrainingAnswer"
+              ],
+              "summary": "hcmTrainingAnswer",
+              "operationId": "hcmTrainingAnswer",
+              "description": "hcmTrainingAnswer\n",
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams =  $input.params().querystring)\n{\n\t\"path\" : \"$context.path\",\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n\t\"pathParameters\":{\n\t    #foreach($param1 in $input.params().path.keySet())\n\t    \"$param1\": \"$util.escapeJavaScript($input.params().path.get($param1))\"\n\t    #if($foreach.hasNext),#end\n        #end\n\t},\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingAnswer:${branchName}/invocations",
+                  "passthroughBehavior": "when_no_match",
+                  "httpMethod": "POST",
+                  "type": "aws"
+              }
+          },
+          "delete": {
+              "tags": [
+                  "hcmTrainingAnswer"
+              ],
+              "summary": "hcmTrainingAnswer",
+              "operationId": "hcmTrainingAnswer",
+              "description": "hcmTrainingAnswer\n",
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams =  $input.params().querystring)\n{\n\t\"path\" : \"$context.path\",\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n\t\"pathParameters\":{\n\t    #foreach($param1 in $input.params().path.keySet())\n\t    \"$param1\": \"$util.escapeJavaScript($input.params().path.get($param1))\"\n\t    #if($foreach.hasNext),#end\n        #end\n\t},\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingAnswer:${branchName}/invocations",
+                  "passthroughBehavior": "when_no_match",
+                  "httpMethod": "POST",
+                  "type": "aws"
+              }
+          },
+          "patch": {
+              "tags": [
+                  "hcmTrainingAnswer"
+              ],
+              "summary": "hcmTrainingAnswer",
+              "operationId": "hcmTrainingAnswer",
+              "description": "hcmTrainingAnswer\n",
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams =  $input.params().querystring)\n{\n\t\"path\" : \"$context.path\",\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n\t\"pathParameters\":{\n\t    #foreach($param1 in $input.params().path.keySet())\n\t    \"$param1\": \"$util.escapeJavaScript($input.params().path.get($param1))\"\n\t    #if($foreach.hasNext),#end\n        #end\n\t},\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingAnswer:${branchName}/invocations",
+                  "passthroughBehavior": "when_no_match",
+                  "httpMethod": "POST",
+                  "type": "aws"
+              }
+          }
+      },
+      "/hcmTrainingTrack": {
+          "options": {
+              "consumes": [
+                  "application/json"
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "type": "mock"
+              }
+          },
+          "x-amazon-apigateway-any-method": {
+              "summary": "hcmTrainingTrack",
+              "operationId": "hcmTrainingTrack",
+              "description": "hcmTrainingTrack\n",
+              "produces": [
+                  "application/json"
+              ],
+              "security": [
+                  {
+                      "Authorization": []
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "200 response",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Some error occured",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "401": {
+                      "description": "Unauthorize",
+                      "headers": {
+                          "Access-Control-Allow-Origin": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Methods": {
+                              "type": "string"
+                          },
+                          "Access-Control-Allow-Headers": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              },
+              "x-amazon-apigateway-integration": {
+                  "credentials": "${APIGatewayARN}",
+                  "uri": "arn:aws:apigateway:${Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${Region}:188097494660:function:${LambdaPrefixName}_hcmTrainingTrack:${branchName}/invocations",
+                  "responses": {
+                      "default": {
+                          "statusCode": "200",
+                          "responseParameters": {
+                              "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                              "method.response.header.Access-Control-Allow-Origin": "'*'"
+                          }
+                      }
+                  },
+                  "requestTemplates": {
+                      "application/json": "#set($allParams = $input.params().querystring)\n{\n\t\"httpMethod\" : \"$context.httpMethod\",\n\t\"body\": $input.json('$'),\n    \"queryStringParameters\" : {\n      #foreach($paramName in $allParams.keySet())\n      \"$paramName\" : \"$util.escapeJavaScript($allParams.get($paramName))\"\n      #if($foreach.hasNext),#end\n      #end\n    },\n    \"headers\": {\n        #foreach($param in $input.params().header.keySet())\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\n        #if($foreach.hasNext),#end\n        #end\n    }\n}"
+                  },
+                  "passthroughBehavior": "when_no_templates",
+                  "httpMethod": "POST",
+                  "contentHandling": "CONVERT_TO_TEXT",
+                  "type": "aws"
+              }
+          }
+      }
+  },
+  "securityDefinitions": {
+      "Authorization": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header",
+          "x-amazon-apigateway-authtype": "cognito_user_pools",
+          "x-amazon-apigateway-authorizer": {
+              "providerARNs": [
+                  "${CognitoARN}"
+              ],
+              "type": "cognito_user_pools"
+          }
+      }
+  },
+  "x-amazon-apigateway-gateway-responses": {
+      "DEFAULT_4XX": {
+          "statusCode": 401,
+          "responseParameters": {
+              "gatewayresponse.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+              "gatewayresponse.header.Access-Control-Allow-Origin": "'*'",
+              "gatewayresponse.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+          }
+      }
+  },
+  "schemes": [
+      "https"
+  ]
+}

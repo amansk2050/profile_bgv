@@ -1,0 +1,14 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "sample-template",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "sample"
+  ],
+  "author": "vinay@code5.org",
+  "license": "ISC"
+}

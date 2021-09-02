@@ -1,0 +1,61 @@
+image: sookcha/docker-awscli-with-zip
+
+pipelines:
+    tags: 
+        createLambda:
+            - step:
+                  deployment: development
+                  script:
+                      - echo $Project_Name
+                      - apt-get install jq -y
+                      - aws configure set aws_access_key_id $ACCESS_KEY
+                      - aws configure set aws_secret_access_key $SECRET_KEY
+                      - aws configure set region $REGION
+                      - aws configure set default_output_format json
+                      - cd deploy/lambdaCreate
+                      - bash task.sh $Project_Name $Role_Associated_With_Lambda
+        pushLambda:
+            - step:
+                  deployment: development
+                  script:
+                      - apt-get install jq -y
+                      - aws configure set aws_access_key_id $ACCESS_KEY
+                      - aws configure set aws_secret_access_key $SECRET_KEY
+                      - aws configure set region $REGION
+                      - aws configure set default_output_format json
+                      - cd deploy/pushLambdaCode
+                      - bash Lambdabash.sh $Project_Name $S3_BUCKET $REGION $ENVIRONMENT $Role_Associated_With_Lambda $stage $AccountId
+        push-API:
+            - step:
+                  deployment: development
+                  script:
+                      - apt-get install zip -y
+                      - apt-get install jq -y
+                      - aws configure set aws_access_key_id $ACCESS_KEY
+                      - aws configure set aws_secret_access_key $SECRET_KEY
+                      - aws configure set region $REGION
+                      - aws configure set default_output_format json
+                      - cd deploy/pushApi
+                      - bash task.sh $Project_Name $Cognito_ARN $API_NAME $REGION $API_Gateway_ARN $API_ID $stage $AccountId
+        run-all-3-pipeline:
+            - step:
+                  deployment: development
+                  script:
+                      - echo $Project_Name
+                      - apt-get install zip -y
+                      - apt-get install jq -y
+                      - aws configure set aws_access_key_id $ACCESS_KEY
+                      - aws configure set aws_secret_access_key $SECRET_KEY
+                      - aws configure set region $REGION
+                      - aws configure set default_output_format json
+                      - echo “Create Lambda”
+                      - cd deploy/lambdaCreate
+                      - bash task.sh $Project_Name $Role_Associated_With_Lambda
+                      - echo “Push Lambda”
+                      - cd ../..
+                      - cd deploy/pushLambdaCode
+                      - bash Lambdabash.sh $Project_Name $S3_BUCKET $REGION $ENVIRONMENT $Role_Associated_With_Lambda $stage $AccountId
+                      - echo “Pushing API”
+                      - cd ../..
+                      - cd deploy/pushApi
+                      - bash task.sh $Project_Name $Cognito_ARN $API_NAME $REGION $API_Gateway_ARN $API_ID $stage $AccountId

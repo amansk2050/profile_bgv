@@ -1,0 +1,139 @@
+AWSTemplateFormatVersion: "2020-01-01"
+Transform: AWS::Serverless-2016-10-31
+Description: Offline test of badges_and_training
+Resources:
+  cognitoauth:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/question/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /cognitoauth
+            Method: any
+
+  trainingCategory:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingCategory/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingCategory
+            Method: any
+
+  trainingSubCategory:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingSubCategory/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingSubCategory
+            Method: any
+
+  trainingCourse:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingCourse/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingCourse
+            Method: any
+
+  trainingLecture:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingLecture/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingLecture
+            Method: any
+
+  trainingQuestion:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingQuestion/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingQuestion
+            Method: any
+
+  trainingAnswer:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingAnswer/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingAnswer
+            Method: any
+
+  trainingTrack:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: src/lambda/trainingTrack/index.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          AWS_REGION: local
+
+      Events:
+        AllProduct:
+          Type: Api
+          Properties:
+            Path: /trainingTrack
+            Method: any
