@@ -9,10 +9,13 @@ const postSchema = {
   type: "object",
   additionalProperties: false,
   properties: {
-    role_name: {
+    permission_name: {
       type: "string"
     },
     role_id:{
+      type:"number"
+    },
+    p_id:{
       type:"number"
     },
     status:{
@@ -38,7 +41,7 @@ async function execute(data, headers, callback) {
   validate_all(validate1, data)
     
     .then(function (result) {
-      return updateRole(result);
+      return updatePermission(result);
     })
     .then(function (result) {
       response({ code: 200, body: result }, callback);
@@ -68,23 +71,24 @@ function validate_all(validate, data) {
 
 //----------fucntion to update role --
 
-function updateRole(result) {
-  console.log("inside updateRole function ");
+function updatePermission(result) {
+  console.log("inside updatePermission function ");
   return new Promise(async (resolve, reject) => {
     var set1 = [];
     var count1 = 0;
     var query = "";
     try {
-      query += `update bgv_role `;
+      query += `update bgv_permission `;
       if (result != null) {
         if (
-          result.role_name != undefined ||
-          result.status != undefined 
+          result.permission_name != undefined ||
+          result.status != undefined ||
+          result.role_id != undefined
         ) {
           query += "set ";
 
-          if (result.role_name) {
-            set1[count1] = `role_name = '${result.role_name}'  `;
+          if (result.permission_name) {
+            set1[count1] = `permission_name = '${result.permission_name}'  `;
             count1++;
           }
           
@@ -94,12 +98,17 @@ function updateRole(result) {
             count1++;
           }
 
+          if (result.role_id) {
+            set1[count1] = `role_id = '${result.role_id}'  `;
+            count1++;
+          }
+
           query += set1.join(" , ");
         }
       }
-      query += `where role_id='${result.role_id}';`;
+      query += `where p_id='${result.p_id}';`;
       let res = await client.query(query);
-      resolve({ message: "role updated successfully" });
+      resolve({ message: "permission updated successfully" });
     } catch (err) {
       reject(err);
     }

@@ -11,7 +11,13 @@ const postSchema = {
   properties: {
     
     role_id:{
-      type:"number"
+      type:"string"
+    },
+    role_name:{
+      type:"string"
+    },
+    status:{
+      type:"string"
     }
 
   }

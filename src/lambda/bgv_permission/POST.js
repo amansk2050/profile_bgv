@@ -9,14 +9,11 @@ const postSchema = {
   type: "object",
   additionalProperties: false,
   properties: {
-    role_name: {
+    permission_name: {
       type: "string"
     },
     role_id:{
       type:"number"
-    },
-    status:{
-      type:"boolean"
     }
 
   }
@@ -38,7 +35,7 @@ async function execute(data, headers, callback) {
   validate_all(validate1, data)
     
     .then(function (result) {
-      return updateRole(result);
+      return insertPermission(result);
     })
     .then(function (result) {
       response({ code: 200, body: result }, callback);
@@ -66,40 +63,24 @@ function validate_all(validate, data) {
 }
 
 
-//----------fucntion to update role --
-
-function updateRole(result) {
-  console.log("inside updateRole function ");
+//----------fucntion to insert role --
+function insertPermission(result) {
+  console.log("inside insertPermission function ");
   return new Promise(async (resolve, reject) => {
-    var set1 = [];
-    var count1 = 0;
-    var query = "";
     try {
-      query += `update bgv_role `;
-      if (result != null) {
-        if (
-          result.role_name != undefined ||
-          result.status != undefined 
-        ) {
-          query += "set ";
-
-          if (result.role_name) {
-            set1[count1] = `role_name = '${result.role_name}'  `;
-            count1++;
-          }
-          
-          
-          if (result.status) {
-            set1[count1] = `status = '${result.status}'  `;
-            count1++;
-          }
-
-          query += set1.join(" , ");
-        }
+      if (typeof result == "string") {
+        result = JSON.parse(result);
       }
-      query += `where role_id='${result.role_id}';`;
+
+      var query = `insert into bgv_permission(permission_name,role_id) values('${result.role_name}','${result.role_id}') returning p_id;`;
+
       let res = await client.query(query);
-      resolve({ message: "role updated successfully" });
+
+      permission_id = res.rows[0].p_id;
+
+      console.log('course_id------->', permission_id);
+
+      resolve({ success: "permission  added successfuly" });
     } catch (err) {
       reject(err);
     }

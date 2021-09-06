@@ -61,7 +61,7 @@ function validate_all(validate, data) {
 }
 
 
-//----------fucntion to insert role --
+//----------fucntion to delete role --
 
 function deleteRole(result) {
   console.log("inside deleteRole function ");
